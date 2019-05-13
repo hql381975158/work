@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			#btn{
+				height:40px;
+				float:left;
+				padding:0 10px;
+				line-height:38px;
+				border:1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="btn">点击我吧</div>
+		<script>
+			var btn = document.getElementById('btn');
+			var timer = null;
+			var isClick = true;
+			var count1 = 5;
+			var count2 = count1;
+			btn.onclick = function(){
+				if(isClick){
+					console.log('%c点击生效','color:green;');
+					isClick = false;
+					timer = setInterval(function(){
+						btn.innerText = '不能点击 ('+ count1-- +')s';
+						if(count1 < 1){
+							clearInterval(timer);
+							isClick = true;
+							count1 = count2
+							btn.innerText = '点击我吧';
+						}
+					},1000);
+				}else{
+					console.log('%c点击无效','color:red;');
+				}
+			}
+		</script>
+	</body>
+</html>
